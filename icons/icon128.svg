@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2383e2"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="#ffffff"/>
+  <g transform="translate(24, 16)">
+    <!-- Lightbulb -->
+    <path d="M40 8C22.327 8 8 22.327 8 40C8 52.5 16 63 28 68V76C28 78.2 29.8 80 32 80H48C50.2 80 52 78.2 52 76V68C64 63 72 52.5 72 40C72 22.327 57.673 8 40 8Z" fill="url(#grad)"/>
+    <!-- Lightbulb base -->
+    <rect x="30" y="82" width="20" height="6" rx="2" fill="url(#grad)" opacity="0.8"/>
+    <rect x="32" y="90" width="16" height="4" rx="2" fill="url(#grad)" opacity="0.6"/>
+    <!-- Light rays -->
+    <circle cx="40" cy="36" r="12" fill="white" opacity="0.3"/>
+  </g>
+</svg>

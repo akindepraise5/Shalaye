@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# Logs
+*.log
+
+# API Keys (if accidentally committed)
+.env
+.env.local
+secrets.json
+
+# Test files
+test-api.html
+
+# API Keys config (never commit!)
+config.js
