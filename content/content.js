@@ -6,7 +6,9 @@
 
     // ===== Message Listener =====
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        if (request.action === 'getContent') {
+        if (request.action === 'ping') {
+            sendResponse({ success: true });
+        } else if (request.action === 'getContent') {
             const content = extractPageContent();
             const readingTime = calculateReadingTime(content);
             sendResponse({
@@ -16,7 +18,11 @@
                 readingTime
             });
         } else if (request.action === 'explainText') {
-            showExplanationTooltip(request.explanation, request.position);
+            if (request.error) {
+                showExplanationTooltip("⚠️ Error: " + request.error, request.position);
+            } else {
+                showExplanationTooltip(request.explanation, request.position);
+            }
             sendResponse({ success: true });
         } else if (request.action === 'highlightKeyPoints') {
             highlightTextOnPage(request.keyPoints);
@@ -41,10 +47,10 @@
 
         const mainContent = findMainContent();
         if (mainContent) {
-            return cleanText(mainContent.innerText);
+            return cleanText(mainContent.textContent);
         }
 
-        return cleanText(document.body.innerText);
+        return cleanText(document.body.textContent);
     }
 
     // ===== Check if PDF =====
@@ -62,7 +68,7 @@
             const textLayers = pdfViewer.querySelectorAll('.textLayer');
             let text = '';
             textLayers.forEach(layer => {
-                text += layer.innerText + '\n';
+                text += layer.textContent + '\n';
             });
             return cleanText(text);
         }
@@ -79,7 +85,7 @@
 
         for (const selector of selectors) {
             const element = document.querySelector(selector);
-            if (element && element.innerText.trim().length > 200) {
+            if (element && element.textContent.trim().length > 200) {
                 return element;
             }
         }
@@ -94,7 +100,7 @@
         let maxLength = 0;
 
         candidates.forEach(el => {
-            const text = el.innerText.trim();
+            const text = el.textContent.trim();
             if (text.length > 500 && text.length < 50000) {
                 const className = el.className.toLowerCase();
                 const id = (el.id || '').toLowerCase();
@@ -297,7 +303,7 @@
             if (!selection || selection.rangeCount === 0) return;
 
             const text = selection.toString().trim();
-            if (!text || text.length < 10 || text.length > 500) return;
+            if (!text || text.length < 10 || text.length > 5000) return;
 
             const range = selection.getRangeAt(0);
             const rect = range.getBoundingClientRect();
@@ -329,6 +335,11 @@
 
                     if (response && response.explanation) {
                         showExplanationTooltip(response.explanation, {
+                            x: rect.left + window.scrollX,
+                            y: rect.bottom + window.scrollY
+                        });
+                    } else if (response && response.error) {
+                        showExplanationTooltip("⚠️ Error: " + response.error, {
                             x: rect.left + window.scrollX,
                             y: rect.bottom + window.scrollY
                         });

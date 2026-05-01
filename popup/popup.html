@@ -9,180 +9,273 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="header-left">
-      <span class="logo">📖</span>
-      <h1 class="title">Shalaye</h1>
-    </div>
-    <div class="header-right">
-      <button id="themeToggle" class="icon-btn" title="Toggle theme">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-      <button id="settingsBtn" class="icon-btn" title="Settings">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path
-            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-          </path>
-        </svg>
-      </button>
-    </div>
-  </header>
 
-  <!-- Tabs -->
-  <nav class="tabs">
-    <button class="tab active" data-tab="summarize">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-      </svg>
-      Summarize
-    </button>
-    <button class="tab" data-tab="saved">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-      </svg>
-      Saved
-    </button>
-  </nav>
-
-  <!-- Page Info -->
-  <div class="page-info">
-    <div class="page-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-      </svg>
+  <!-- ===== SCREEN 1: Onboarding (shown once) ===== -->
+  <section id="view-onboarding" class="view active">
+    <div class="onboarding-logo">
+      <img src="../icons/icon128.png" alt="Shalaye" width="56" height="56" style="border-radius: 14px;">
     </div>
-    <div class="page-details">
-      <div id="pageTitle" class="page-title">Loading...</div>
-      <div id="readingTime" class="reading-time"></div>
-    </div>
-  </div>
 
-  <!-- Summarize Tab -->
-  <main id="summarize-tab" class="tab-content active">
-    <!-- Complexity Selector -->
-    <div class="complexity-section">
-      <div class="complexity-header">
-        <label>Complexity</label>
-        <span id="complexityValue" class="complexity-badge">Standard</span>
-      </div>
-      <div class="complexity-slider-container">
-        <input type="range" id="complexitySlider" min="1" max="3" value="2" class="complexity-slider">
-        <div class="complexity-labels">
-          <span>Quick</span>
-          <span>Standard</span>
-          <span>Detailed</span>
+    <h1 class="onboarding-title">Shalaye <span class="onboarding-sparkle">✨</span></h1>
+    <h2 class="onboarding-subtitle">Understand anything instantly</h2>
+    <p class="onboarding-desc">Summarize any webpage in seconds and get to the point, effortlessly.</p>
+
+    <!-- Illustration: docs → arrow → summary -->
+    <div class="onboarding-illustration">
+      <div class="illust-docs">
+        <div class="illust-doc">
+          <div class="illust-line blue"></div>
+          <div class="illust-line short"></div>
+        </div>
+        <div class="illust-doc">
+          <div class="illust-line light"></div>
+          <div class="illust-line short"></div>
+        </div>
+        <div class="illust-doc">
+          <div class="illust-line"></div>
+          <div class="illust-line short blue"></div>
         </div>
       </div>
-    </div>
 
-    <!-- Summarize Button -->
-    <button id="summarizeBtn" class="summarize-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-      </svg>
-      <span class="btn-text">Summarize This Page</span>
-    </button>
-
-    <!-- Loading State -->
-    <div id="loading" class="loading hidden">
-      <div class="loading-spinner"></div>
-      <div class="loading-text">Analyzing content...</div>
-      <div class="loading-subtext">This usually takes a few seconds</div>
-    </div>
-
-    <!-- Error State -->
-    <div id="error" class="error hidden">
-      <div class="error-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="8" x2="12" y2="12"></line>
-          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      <div class="illust-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </div>
-      <div id="errorMessage" class="error-message">Something went wrong</div>
-      <button id="retryBtn" class="retry-btn">Try Again</button>
-    </div>
 
-    <!-- Summary Result -->
-    <div id="summaryResult" class="summary-result hidden">
-      <div class="result-header">
-        <h3>Summary</h3>
-        <div class="result-actions">
-          <button id="copyBtn" class="action-btn" title="Copy">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-          </button>
-          <button id="saveBtn" class="action-btn" title="Save">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </button>
-          <button id="speakBtn" class="action-btn" title="Read aloud">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div id="summaryText" class="summary-text"></div>
-
-      <div class="key-points-section">
-        <h4 class="key-points-title">Key Takeaways</h4>
-        <ul id="keyPoints" class="key-points"></ul>
+      <div class="illust-result">
+        <div class="illust-bullet"><span class="illust-bullet-dot"></span><span class="illust-bullet-line"></span></div>
+        <div class="illust-bullet"><span class="illust-bullet-dot"></span><span class="illust-bullet-line"></span></div>
+        <div class="illust-bullet"><span class="illust-bullet-dot"></span><span class="illust-bullet-line"></span></div>
       </div>
     </div>
-  </main>
 
-  <!-- Saved Tab -->
-  <main id="saved-tab" class="tab-content">
-    <div id="savedList" class="saved-list">
-      <div id="emptyState" class="empty-state">
-        <div class="empty-icon">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+    <button id="getStartedBtn" class="btn-primary">Get Started</button>
+    <button id="skipBtn" class="btn-text">Skip</button>
+
+    <div class="dot-indicators">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+
+  <!-- ===== SCREEN 2: Main / Empty State ===== -->
+  <section id="view-main" class="view">
+    <header class="header">
+      <div class="header-left">
+        <img class="header-logo" src="../icons/icon48.png" alt="Shalaye" width="28" height="28">
+        <span class="header-title">Shalaye</span>
+      </div>
+      <div class="header-right">
+        <button id="savedNavBtn" class="icon-btn" title="Saved summaries">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1469 3.92636C16.045 1.16256 19.955 1.16257 20.8531 3.92636L23.1314 10.9372L30.5032 10.9375C33.4092 10.9376 34.6175 14.6563 32.2665 16.3645L26.3028 20.6977L28.5805 27.7087C29.4784 30.4726 26.3151 32.7709 23.964 31.0628L18 26.73L12.036 31.0628C9.68486 32.7709 6.52159 30.4726 7.41951 27.7087L9.69723 20.6977L3.73353 16.3645C1.38254 14.6563 2.59081 10.9376 5.49686 10.9375L12.8686 10.9372L15.1469 3.92636ZM18 4.85351L15.7217 11.8644C15.3201 13.1004 14.1683 13.9372 12.8687 13.9372L5.49698 13.9375L11.4607 18.2707C12.512 19.0347 12.952 20.3887 12.5504 21.6247L10.2727 28.6357L16.2367 24.3029C17.2882 23.5391 18.7118 23.5391 19.7633 24.3029L25.7273 28.6357L23.4496 21.6247C23.048 20.3887 23.488 19.0347 24.5393 18.2707L30.503 13.9375L23.1313 13.9372C21.8317 13.9372 20.6799 13.1003 20.2783 11.8644L18 4.85351Z" fill="currentColor"/>
+</svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0293 6.12209C15.0399 1.9593 20.9601 1.95931 21.9707 6.12209C22.1442 6.83684 22.9631 7.17604 23.5912 6.79333C27.2494 4.56439 31.4356 8.75064 29.2067 12.4088C28.824 13.0369 29.1632 13.8558 29.8779 14.0293C34.0407 15.0399 34.0407 20.9601 29.8779 21.9707C29.1632 22.1442 28.824 22.9631 29.2067 23.5912C31.4356 27.2494 27.2494 31.4356 23.5912 29.2067C22.9631 28.824 22.1442 29.1632 21.9707 29.8779C20.9601 34.0407 15.0399 34.0407 14.0293 29.8779C13.8558 29.1632 13.0369 28.824 12.4088 29.2067C8.75064 31.4356 4.56439 27.2494 6.79333 23.5912C7.17604 22.9631 6.83684 22.1442 6.12209 21.9707C1.95931 20.9601 1.9593 15.0399 6.12209 14.0293C6.83684 13.8558 7.17604 13.0369 6.79333 12.4088C4.56439 8.75064 8.75064 4.56439 12.4088 6.79333C13.0369 7.17604 13.8558 6.83684 14.0293 6.12209ZM19.0554 6.82984C18.7868 5.72339 17.2132 5.72339 16.9446 6.82984C16.2918 9.51895 13.2109 10.7951 10.8478 9.35522C9.87547 8.76278 8.76278 9.87547 9.35522 10.8478C10.7951 13.2109 9.51895 16.2918 6.82984 16.9446C5.72339 17.2132 5.72339 18.7868 6.82984 19.0554C9.51895 19.7082 10.7951 22.7891 9.35522 25.1522C8.76278 26.1245 9.87547 27.2372 10.8478 26.6448C13.2109 25.2049 16.2918 26.4811 16.9446 29.1702C17.2132 30.2766 18.7868 30.2766 19.0554 29.1702C19.7082 26.4811 22.7891 25.2049 25.1522 26.6448C26.1245 27.2372 27.2372 26.1245 26.6448 25.1522C25.2049 22.7891 26.4811 19.7082 29.1702 19.0554C30.2766 18.7868 30.2766 17.2132 29.1702 16.9446C26.4811 16.2918 25.2049 13.2109 26.6448 10.8478C27.2372 9.87547 26.1245 8.76278 25.1522 9.35522C22.7891 10.7951 19.7082 9.51895 19.0554 6.82984ZM18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15ZM12 18C12 14.6863 14.6863 12 18 12C21.3137 12 24 14.6863 24 18C24 21.3137 21.3137 24 18 24C14.6863 24 12 21.3137 12 18Z" fill="currentColor"/>
+</svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="main-illustration">
+        <img src="../In-app illustration/summary-hero-illustration.png" alt="Summarize this page" style="width: 260px; height: 200px; object-fit: contain; margin-bottom: 24px; display: block; margin-left: auto; margin-right: auto;">
+      </div>
+
+      <h2 class="main-heading">Summarize this page</h2>
+      <p class="main-desc">Shalaye will analyze the content and give you a clear, concise summary in seconds.</p>
+
+      <div class="depth-selector">
+        <label class="depth-option">
+          <input type="radio" name="summaryDepth" value="1">
+          <span class="depth-pill">Quick</span>
+        </label>
+        <label class="depth-option">
+          <input type="radio" name="summaryDepth" value="2" checked>
+          <span class="depth-pill">Standard</span>
+        </label>
+        <label class="depth-option">
+          <input type="radio" name="summaryDepth" value="3">
+          <span class="depth-pill">Detailed</span>
+        </label>
+      </div>
+
+      <button id="summarizeBtn" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3C8.32843 3 9 3.67157 9 4.5V6H10.5C11.3284 6 12 6.67157 12 7.5C12 8.32843 11.3284 9 10.5 9H9V10.5C9 11.3284 8.32843 12 7.5 12C6.67157 12 6 11.3284 6 10.5V9H4.5C3.67157 9 3 8.32843 3 7.5C3 6.67157 3.67157 6 4.5 6H6V4.5C6 3.67157 6.67157 3 7.5 3ZM19.5 3C20.1456 3 20.7189 3.41315 20.923 4.02566L24.1253 13.6325L32.0267 16.5955C32.6121 16.8151 33 17.3747 33 18C33 18.6253 32.6121 19.1849 32.0267 19.4045L24.1253 22.3675L20.923 31.9743C20.7189 32.5869 20.1456 33 19.5 33C18.8544 33 18.2811 32.5869 18.077 31.9743L14.8747 22.3675L6.97332 19.4045C6.38786 19.1849 6 18.6253 6 18C6 17.3747 6.38786 16.8151 6.97332 16.5955L14.8747 13.6325L18.077 4.02566C18.2811 3.41315 18.8544 3 19.5 3ZM19.5 9.24342L17.4945 15.2601C17.3513 15.6895 17.0219 16.0313 16.5981 16.1902L11.772 18L16.5981 19.8098C17.0219 19.9687 17.3513 20.3105 17.4945 20.7399L19.5 26.7566L21.5055 20.7399C21.6487 20.3105 21.9781 19.9687 22.4019 19.8098L27.228 18L22.4019 16.1902C21.9781 16.0313 21.6487 15.6895 21.5055 15.2601L19.5 9.24342ZM9 24C9.82843 24 10.5 24.6716 10.5 25.5V27H12C12.8284 27 13.5 27.6716 13.5 28.5C13.5 29.3284 12.8284 30 12 30H10.5V31.5C10.5 32.3284 9.82843 33 9 33C8.17157 33 7.5 32.3284 7.5 31.5V30H6C5.17157 30 4.5 29.3284 4.5 28.5C4.5 27.6716 5.17157 27 6 27H7.5V25.5C7.5 24.6716 8.17157 24 9 24Z" fill="currentColor"/>
+</svg>
+        Summarize Page
+      </button>
+    </div>
+  </section>
+
+
+  <!-- ===== SCREEN 3: Loading ===== -->
+  <section id="view-loading" class="view">
+    <header class="header">
+      <div class="header-left">
+        <img class="header-logo" src="../icons/icon48.png" alt="Shalaye" width="28" height="28">
+        <span class="header-title">Shalaye</span>
+      </div>
+      <div class="header-right">
+        <button class="icon-btn" disabled style="opacity:0.3">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0293 6.12209C15.0399 1.9593 20.9601 1.95931 21.9707 6.12209C22.1442 6.83684 22.9631 7.17604 23.5912 6.79333C27.2494 4.56439 31.4356 8.75064 29.2067 12.4088C28.824 13.0369 29.1632 13.8558 29.8779 14.0293C34.0407 15.0399 34.0407 20.9601 29.8779 21.9707C29.1632 22.1442 28.824 22.9631 29.2067 23.5912C31.4356 27.2494 27.2494 31.4356 23.5912 29.2067C22.9631 28.824 22.1442 29.1632 21.9707 29.8779C20.9601 34.0407 15.0399 34.0407 14.0293 29.8779C13.8558 29.1632 13.0369 28.824 12.4088 29.2067C8.75064 31.4356 4.56439 27.2494 6.79333 23.5912C7.17604 22.9631 6.83684 22.1442 6.12209 21.9707C1.95931 20.9601 1.9593 15.0399 6.12209 14.0293C6.83684 13.8558 7.17604 13.0369 6.79333 12.4088C4.56439 8.75064 8.75064 4.56439 12.4088 6.79333C13.0369 7.17604 13.8558 6.83684 14.0293 6.12209ZM19.0554 6.82984C18.7868 5.72339 17.2132 5.72339 16.9446 6.82984C16.2918 9.51895 13.2109 10.7951 10.8478 9.35522C9.87547 8.76278 8.76278 9.87547 9.35522 10.8478C10.7951 13.2109 9.51895 16.2918 6.82984 16.9446C5.72339 17.2132 5.72339 18.7868 6.82984 19.0554C9.51895 19.7082 10.7951 22.7891 9.35522 25.1522C8.76278 26.1245 9.87547 27.2372 10.8478 26.6448C13.2109 25.2049 16.2918 26.4811 16.9446 29.1702C17.2132 30.2766 18.7868 30.2766 19.0554 29.1702C19.7082 26.4811 22.7891 25.2049 25.1522 26.6448C26.1245 27.2372 27.2372 26.1245 26.6448 25.1522C25.2049 22.7891 26.4811 19.7082 29.1702 19.0554C30.2766 18.7868 30.2766 17.2132 29.1702 16.9446C26.4811 16.2918 25.2049 13.2109 26.6448 10.8478C27.2372 9.87547 26.1245 8.76278 25.1522 9.35522C22.7891 10.7951 19.7082 9.51895 19.0554 6.82984ZM18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15ZM12 18C12 14.6863 14.6863 12 18 12C21.3137 12 24 14.6863 24 18C24 21.3137 21.3137 24 18 24C14.6863 24 12 21.3137 12 18Z" fill="currentColor"/> </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="loading-content">
+      <div class="loading-illustration">
+        <img src="../In-app Illustration Motion/soft-shadow.png" alt="" class="layer-shadow">
+        <img src="../In-app Illustration Motion/document-bg.png" alt="" class="layer-doc">
+        <img src="../In-app Illustration Motion/orbit-line.png" alt="" class="layer-orbit">
+        <img src="../In-app Illustration Motion/sparkles.png" alt="" class="layer-sparkles">
+        <img src="../In-app Illustration Motion/chat-icon.png" alt="" class="layer-chat">
+      </div>
+
+      <h2 class="loading-heading">Analyzing this page...</h2>
+      <p class="loading-desc">Breaking it down for you.<br>This usually takes a few seconds.</p>
+    </div>
+  </section>
+
+
+  <!-- ===== SCREEN 4: Summary Result ===== -->
+  <section id="view-summary" class="view">
+    <header class="header">
+      <div class="header-left">
+        <img class="header-logo" src="../icons/icon48.png" alt="Shalaye" width="28" height="28">
+        <span class="header-title">Shalaye</span>
+      </div>
+      <div class="header-right">
+        <button id="speakBtn" class="icon-btn" title="Read aloud">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
           </svg>
+        </button>
+        <button id="savedNavBtn2" class="icon-btn" title="Saved summaries">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1469 3.92636C16.045 1.16256 19.955 1.16257 20.8531 3.92636L23.1314 10.9372L30.5032 10.9375C33.4092 10.9376 34.6175 14.6563 32.2665 16.3645L26.3028 20.6977L28.5805 27.7087C29.4784 30.4726 26.3151 32.7709 23.964 31.0628L18 26.73L12.036 31.0628C9.68486 32.7709 6.52159 30.4726 7.41951 27.7087L9.69723 20.6977L3.73353 16.3645C1.38254 14.6563 2.59081 10.9376 5.49686 10.9375L12.8686 10.9372L15.1469 3.92636ZM18 4.85351L15.7217 11.8644C15.3201 13.1004 14.1683 13.9372 12.8687 13.9372L5.49698 13.9375L11.4607 18.2707C12.512 19.0347 12.952 20.3887 12.5504 21.6247L10.2727 28.6357L16.2367 24.3029C17.2882 23.5391 18.7118 23.5391 19.7633 24.3029L25.7273 28.6357L23.4496 21.6247C23.048 20.3887 23.488 19.0347 24.5393 18.2707L30.503 13.9375L23.1313 13.9372C21.8317 13.9372 20.6799 13.1003 20.2783 11.8644L18 4.85351Z" fill="currentColor"/>
+</svg>
+        </button>
+        <button id="settingsBtn2" class="icon-btn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0293 6.12209C15.0399 1.9593 20.9601 1.95931 21.9707 6.12209C22.1442 6.83684 22.9631 7.17604 23.5912 6.79333C27.2494 4.56439 31.4356 8.75064 29.2067 12.4088C28.824 13.0369 29.1632 13.8558 29.8779 14.0293C34.0407 15.0399 34.0407 20.9601 29.8779 21.9707C29.1632 22.1442 28.824 22.9631 29.2067 23.5912C31.4356 27.2494 27.2494 31.4356 23.5912 29.2067C22.9631 28.824 22.1442 29.1632 21.9707 29.8779C20.9601 34.0407 15.0399 34.0407 14.0293 29.8779C13.8558 29.1632 13.0369 28.824 12.4088 29.2067C8.75064 31.4356 4.56439 27.2494 6.79333 23.5912C7.17604 22.9631 6.83684 22.1442 6.12209 21.9707C1.95931 20.9601 1.9593 15.0399 6.12209 14.0293C6.83684 13.8558 7.17604 13.0369 6.79333 12.4088C4.56439 8.75064 8.75064 4.56439 12.4088 6.79333C13.0369 7.17604 13.8558 6.83684 14.0293 6.12209ZM19.0554 6.82984C18.7868 5.72339 17.2132 5.72339 16.9446 6.82984C16.2918 9.51895 13.2109 10.7951 10.8478 9.35522C9.87547 8.76278 8.76278 9.87547 9.35522 10.8478C10.7951 13.2109 9.51895 16.2918 6.82984 16.9446C5.72339 17.2132 5.72339 18.7868 6.82984 19.0554C9.51895 19.7082 10.7951 22.7891 9.35522 25.1522C8.76278 26.1245 9.87547 27.2372 10.8478 26.6448C13.2109 25.2049 16.2918 26.4811 16.9446 29.1702C17.2132 30.2766 18.7868 30.2766 19.0554 29.1702C19.7082 26.4811 22.7891 25.2049 25.1522 26.6448C26.1245 27.2372 27.2372 26.1245 26.6448 25.1522C25.2049 22.7891 26.4811 19.7082 29.1702 19.0554C30.2766 18.7868 30.2766 17.2132 29.1702 16.9446C26.4811 16.2918 25.2049 13.2109 26.6448 10.8478C27.2372 9.87547 26.1245 8.76278 25.1522 9.35522C22.7891 10.7951 19.7082 9.51895 19.0554 6.82984ZM18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15ZM12 18C12 14.6863 14.6863 12 18 12C21.3137 12 24 14.6863 24 18C24 21.3137 21.3137 24 18 24C14.6863 24 12 21.3137 12 18Z" fill="currentColor"/>
+</svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="summary-content">
+      <!-- Error State (hidden by default) -->
+      <div id="errorBox" class="error-box hidden">
+        <div class="error-icon">⚠️</div>
+        <div id="errorMessage" class="error-message">Something went wrong</div>
+        <button id="retryBtn" class="btn-retry">Try Again</button>
+      </div>
+
+      <!-- Summary (hidden by default, shown on success) -->
+      <div id="summaryResultBox">
+        <div class="summary-label">
+          <span class="summary-label-icon">✨</span>
+          <span class="summary-label-text">Summary</span>
+          <select id="summaryBadgeSelect" class="summary-badge-select">
+            <option value="1">⚡ Quick</option>
+            <option value="2">⚡ Standard</option>
+            <option value="3">⚡ Detailed</option>
+          </select>
+        </div>
+
+        <p id="summaryText" class="summary-text"></p>
+
+        <ul id="keyPoints" class="key-points"></ul>
+
+        <div class="summary-actions">
+          <button id="copyBtn" class="action-chip" title="Copy summary">
+            <svg width="14" height="14" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 6C14.1716 6 13.5 6.67157 13.5 7.5V22.5C13.5 23.3284 14.1716 24 15 24H27C27.8284 24 28.5 23.3284 28.5 22.5V12.6213L21.8787 6H15ZM10.5 7.5C10.5 5.01472 12.5147 3 15 3H21.8787C22.6743 3 23.4374 3.31607 24 3.87868L30.6213 10.5C31.1839 11.0626 31.5 11.8257 31.5 12.6213V22.5C31.5 24.9853 29.4853 27 27 27H25.5V28.5C25.5 30.9853 23.4853 33 21 33H9C6.51472 33 4.5 30.9853 4.5 28.5V13.5C4.5 11.0147 6.51472 9 9 9H10.5V7.5ZM10.5 12H9C8.17157 12 7.5 12.6716 7.5 13.5V28.5C7.5 29.3284 8.17157 30 9 30H21C21.8284 30 22.5 29.3284 22.5 28.5V27H15C12.5147 27 10.5 24.9853 10.5 22.5V12Z" fill="currentColor"/>
+</svg>
+            Copy
+          </button>
+          <button id="regenerateBtn" class="action-chip" title="Regenerate summary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Regenerate
+          </button>
+          <button id="saveBtn" class="action-chip" title="Save summary">
+            <svg width="14" height="14" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1469 3.92636C16.045 1.16256 19.955 1.16257 20.8531 3.92636L23.1314 10.9372L30.5032 10.9375C33.4092 10.9376 34.6175 14.6563 32.2665 16.3645L26.3028 20.6977L28.5805 27.7087C29.4784 30.4726 26.3151 32.7709 23.964 31.0628L18 26.73L12.036 31.0628C9.68486 32.7709 6.52159 30.4726 7.41951 27.7087L9.69723 20.6977L3.73353 16.3645C1.38254 14.6563 2.59081 10.9376 5.49686 10.9375L12.8686 10.9372L15.1469 3.92636ZM18 4.85351L15.7217 11.8644C15.3201 13.1004 14.1683 13.9372 12.8687 13.9372L5.49698 13.9375L11.4607 18.2707C12.512 19.0347 12.952 20.3887 12.5504 21.6247L10.2727 28.6357L16.2367 24.3029C17.2882 23.5391 18.7118 23.5391 19.7633 24.3029L25.7273 28.6357L23.4496 21.6247C23.048 20.3887 23.488 19.0347 24.5393 18.2707L30.503 13.9375L23.1313 13.9372C21.8317 13.9372 20.6799 13.1003 20.2783 11.8644L18 4.85351Z" fill="currentColor"/>
+</svg>
+            Save
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== SCREEN 5: Saved / History ===== -->
+  <section id="view-saved" class="view">
+    <header class="header">
+      <div class="header-left">
+        <img class="header-logo" src="../icons/icon48.png" alt="Shalaye" width="28" height="28">
+        <span class="header-title">Shalaye</span>
+      </div>
+      <div class="header-right">
+        <button id="settingsBtn3" class="icon-btn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0293 6.12209C15.0399 1.9593 20.9601 1.95931 21.9707 6.12209C22.1442 6.83684 22.9631 7.17604 23.5912 6.79333C27.2494 4.56439 31.4356 8.75064 29.2067 12.4088C28.824 13.0369 29.1632 13.8558 29.8779 14.0293C34.0407 15.0399 34.0407 20.9601 29.8779 21.9707C29.1632 22.1442 28.824 22.9631 29.2067 23.5912C31.4356 27.2494 27.2494 31.4356 23.5912 29.2067C22.9631 28.824 22.1442 29.1632 21.9707 29.8779C20.9601 34.0407 15.0399 34.0407 14.0293 29.8779C13.8558 29.1632 13.0369 28.824 12.4088 29.2067C8.75064 31.4356 4.56439 27.2494 6.79333 23.5912C7.17604 22.9631 6.83684 22.1442 6.12209 21.9707C1.95931 20.9601 1.9593 15.0399 6.12209 14.0293C6.83684 13.8558 7.17604 13.0369 6.79333 12.4088C4.56439 8.75064 8.75064 4.56439 12.4088 6.79333C13.0369 7.17604 13.8558 6.83684 14.0293 6.12209ZM19.0554 6.82984C18.7868 5.72339 17.2132 5.72339 16.9446 6.82984C16.2918 9.51895 13.2109 10.7951 10.8478 9.35522C9.87547 8.76278 8.76278 9.87547 9.35522 10.8478C10.7951 13.2109 9.51895 16.2918 6.82984 16.9446C5.72339 17.2132 5.72339 18.7868 6.82984 19.0554C9.51895 19.7082 10.7951 22.7891 9.35522 25.1522C8.76278 26.1245 9.87547 27.2372 10.8478 26.6448C13.2109 25.2049 16.2918 26.4811 16.9446 29.1702C17.2132 30.2766 18.7868 30.2766 19.0554 29.1702C19.7082 26.4811 22.7891 25.2049 25.1522 26.6448C26.1245 27.2372 27.2372 26.1245 26.6448 25.1522C25.2049 22.7891 26.4811 19.7082 29.1702 19.0554C30.2766 18.7868 30.2766 17.2132 29.1702 16.9446C26.4811 16.2918 25.2049 13.2109 26.6448 10.8478C27.2372 9.87547 26.1245 8.76278 25.1522 9.35522C22.7891 10.7951 19.7082 9.51895 19.0554 6.82984ZM18 15C16.3431 15 15 16.3431 15 18C15 19.6569 16.3431 21 18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15ZM12 18C12 14.6863 14.6863 12 18 12C21.3137 12 24 14.6863 24 18C24 21.3137 21.3137 24 18 24C14.6863 24 12 21.3137 12 18Z" fill="currentColor"/>
+</svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="saved-content">
+      <div class="saved-tabs">
+        <button class="saved-tab active" data-saved-tab="saved">Saved</button>
+        <button class="saved-tab" data-saved-tab="history">History</button>
+      </div>
+
+      <div class="saved-section-label">Recent</div>
+
+      <div id="savedList" class="saved-list">
+        <!-- Saved items rendered by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1469 3.92636C16.045 1.16256 19.955 1.16257 20.8531 3.92636L23.1314 10.9372L30.5032 10.9375C33.4092 10.9376 34.6175 14.6563 32.2665 16.3645L26.3028 20.6977L28.5805 27.7087C29.4784 30.4726 26.3151 32.7709 23.964 31.0628L18 26.73L12.036 31.0628C9.68486 32.7709 6.52159 30.4726 7.41951 27.7087L9.69723 20.6977L3.73353 16.3645C1.38254 14.6563 2.59081 10.9376 5.49686 10.9375L12.8686 10.9372L15.1469 3.92636ZM18 4.85351L15.7217 11.8644C15.3201 13.1004 14.1683 13.9372 12.8687 13.9372L5.49698 13.9375L11.4607 18.2707C12.512 19.0347 12.952 20.3887 12.5504 21.6247L10.2727 28.6357L16.2367 24.3029C17.2882 23.5391 18.7118 23.5391 19.7633 24.3029L25.7273 28.6357L23.4496 21.6247C23.048 20.3887 23.488 19.0347 24.5393 18.2707L30.503 13.9375L23.1313 13.9372C21.8317 13.9372 20.6799 13.1003 20.2783 11.8644L18 4.85351Z" fill="currentColor"/>
+</svg>
         </div>
         <div class="empty-title">No saved summaries</div>
         <div class="empty-text">Summaries you save will appear here</div>
       </div>
-    </div>
-  </main>
 
-  <!-- Toast Notification -->
+      <div class="saved-footer">
+        <button id="newSummaryBtn" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 3C8.32843 3 9 3.67157 9 4.5V6H10.5C11.3284 6 12 6.67157 12 7.5C12 8.32843 11.3284 9 10.5 9H9V10.5C9 11.3284 8.32843 12 7.5 12C6.67157 12 6 11.3284 6 10.5V9H4.5C3.67157 9 3 8.32843 3 7.5C3 6.67157 3.67157 6 4.5 6H6V4.5C6 3.67157 6.67157 3 7.5 3ZM19.5 3C20.1456 3 20.7189 3.41315 20.923 4.02566L24.1253 13.6325L32.0267 16.5955C32.6121 16.8151 33 17.3747 33 18C33 18.6253 32.6121 19.1849 32.0267 19.4045L24.1253 22.3675L20.923 31.9743C20.7189 32.5869 20.1456 33 19.5 33C18.8544 33 18.2811 32.5869 18.077 31.9743L14.8747 22.3675L6.97332 19.4045C6.38786 19.1849 6 18.6253 6 18C6 17.3747 6.38786 16.8151 6.97332 16.5955L14.8747 13.6325L18.077 4.02566C18.2811 3.41315 18.8544 3 19.5 3ZM19.5 9.24342L17.4945 15.2601C17.3513 15.6895 17.0219 16.0313 16.5981 16.1902L11.772 18L16.5981 19.8098C17.0219 19.9687 17.3513 20.3105 17.4945 20.7399L19.5 26.7566L21.5055 20.7399C21.6487 20.3105 21.9781 19.9687 22.4019 19.8098L27.228 18L22.4019 16.1902C21.9781 16.0313 21.6487 15.6895 21.5055 15.2601L19.5 9.24342ZM9 24C9.82843 24 10.5 24.6716 10.5 25.5V27H12C12.8284 27 13.5 27.6716 13.5 28.5C13.5 29.3284 12.8284 30 12 30H10.5V31.5C10.5 32.3284 9.82843 33 9 33C8.17157 33 7.5 32.3284 7.5 31.5V30H6C5.17157 30 4.5 29.3284 4.5 28.5C4.5 27.6716 5.17157 27 6 27H7.5V25.5C7.5 24.6716 8.17157 24 9 24Z" fill="currentColor"/>
+</svg>
+          Summarize New Page
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== Toast ===== -->
   <div id="toast" class="toast hidden">
     <span id="toastMessage"></span>
   </div>

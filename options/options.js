@@ -1,7 +1,7 @@
 // ===== Options Page Script =====
 
 const geminiKeyInput = document.getElementById('geminiKey');
-const claudeKeyInput = document.getElementById('claudeKey');
+const groqKeyInput = document.getElementById('groqKey');
 const defaultLevelSelect = document.getElementById('defaultLevel');
 const autoSaveCheckbox = document.getElementById('autoSave');
 const showBadgeCheckbox = document.getElementById('showBadge');
@@ -13,14 +13,14 @@ async function loadSettings() {
     try {
         const settings = await chrome.storage.sync.get({
             geminiKey: '',
-            claudeKey: '',
+            groqKey: '',
             defaultLevel: 2,
             autoSave: false,
             showBadge: true
         });
 
         geminiKeyInput.value = settings.geminiKey;
-        claudeKeyInput.value = settings.claudeKey;
+        groqKeyInput.value = settings.groqKey;
         defaultLevelSelect.value = settings.defaultLevel;
         autoSaveCheckbox.checked = settings.autoSave;
         showBadgeCheckbox.checked = settings.showBadge;
@@ -34,7 +34,7 @@ async function saveSettings() {
     try {
         await chrome.storage.sync.set({
             geminiKey: geminiKeyInput.value.trim(),
-            claudeKey: claudeKeyInput.value.trim(),
+            groqKey: groqKeyInput.value.trim(),
             defaultLevel: parseInt(defaultLevelSelect.value),
             autoSave: autoSaveCheckbox.checked,
             showBadge: showBadgeCheckbox.checked
@@ -49,7 +49,12 @@ async function saveSettings() {
 
 // ===== Show Toast =====
 function showToast(message) {
-    toast.textContent = message;
+    toast.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+        ${message}
+    `;
     toast.classList.add('show');
 
     setTimeout(() => {
@@ -59,6 +64,15 @@ function showToast(message) {
 
 // ===== Event Listeners =====
 saveBtn.addEventListener('click', saveSettings);
+
+const headerLogo = document.querySelector('.header-logo');
+if (headerLogo) {
+    headerLogo.style.cursor = 'pointer';
+    headerLogo.title = 'Go to Home';
+    headerLogo.addEventListener('click', () => {
+        window.location.href = '../popup/popup.html';
+    });
+}
 
 // Load settings on page load
 loadSettings();

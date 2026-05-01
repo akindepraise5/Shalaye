@@ -9,9 +9,6 @@
     "contextMenus",
     "scripting"
   ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -24,13 +21,6 @@
     "service_worker": "background/service-worker.js",
     "type": "module"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content/content.js"],
-      "css": ["content/content.css"]
-    }
-  ],
   "options_page": "options/options.html",
   "icons": {
     "16": "icons/icon16.png",

@@ -28,7 +28,9 @@ chrome.runtime.onInstalled.addListener(() => {
 // ===== Context Menu Click Handler =====
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     if (info.menuItemId === 'shalaye-explain' && info.selectionText) {
-        try {
+            // Ensure content script is injected
+            await ensureContentScriptInjected(tab.id);
+
             const [{ result: selectionInfo }] = await chrome.scripting.executeScript({
                 target: { tabId: tab.id },
                 func: () => window.shalayeSelectionInfo
@@ -51,6 +53,18 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
         }
     }
 });
+
+// ===== Ensure Content Script is Injected =====
+async function ensureContentScriptInjected(tabId) {
+    try {
+        await chrome.tabs.sendMessage(tabId, { action: 'ping' });
+    } catch (e) {
+        // If ping fails, inject scripts
+        await chrome.scripting.insertCSS({ target: { tabId }, files: ['content/content.css'] });
+        await chrome.scripting.executeScript({ target: { tabId }, files: ['content/content.js'] });
+        await new Promise(r => setTimeout(r, 100)); // Small delay for initialization
+    }
+}
 
 // ===== Message Listener =====
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {

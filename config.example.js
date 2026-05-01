@@ -9,6 +9,4 @@ const CONFIG = {
 };
 
 // Export for use in service worker
-if (typeof module !== 'undefined') {
-    module.exports = CONFIG;
-}
+export { CONFIG };
