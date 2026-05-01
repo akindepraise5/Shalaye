@@ -83,13 +83,10 @@
     }
 
     .nav-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      object-fit: cover;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 4px;
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px var(--accent-glow));
     }
 
     .nav-name {
@@ -495,7 +492,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-brand">
         <!-- Using the actual Shalaye logo -->
-        <img src="icons/icon128.png" alt="Shalaye Logo" class="nav-logo">
+        <img src="icons/icon128.png?v=2" alt="Shalaye Logo" class="nav-logo">
         <span class="nav-name">Shalaye</span>
       </a>
       <span class="nav-badge">Privacy Policy</span>
