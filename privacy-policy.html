@@ -5,351 +5,737 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy – Shalaye</title>
   <meta name="description" content="Privacy Policy for the Shalaye Chrome Extension – AI-powered web content simplifier.">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #e4e4e7;
+      --text: #09090b;
+      --text-2: #52525b;
+      --text-3: #a1a1aa;
+      --accent: #4f6ef7;
+      --accent-light: #eef1fe;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --green-border: #bbf7d0;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+      --radius: 12px;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f9fafb;
-      color: #111827;
-      line-height: 1.7;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 20px 0;
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .header-inner {
-      max-width: 760px;
+    .nav-inner {
+      max-width: 800px;
       margin: 0 auto;
       padding: 0 24px;
+      height: 60px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
     }
 
-    .logo {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #4f83f7, #6c63ff);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-
-    .brand {
-      font-size: 20px;
-      font-weight: 700;
-      color: #111827;
-    }
-
-    .brand span {
-      font-size: 13px;
-      font-weight: 400;
-      color: #6b7280;
-      margin-left: 8px;
-    }
-
-    main {
-      max-width: 760px;
-      margin: 48px auto;
-      padding: 0 24px 80px;
-    }
-
-    .hero {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 32px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #6b7280;
-      font-size: 15px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #f0fdf4;
-      color: #16a34a;
-      border: 1px solid #bbf7d0;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      margin-top: 16px;
-    }
-
-    .card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 20px;
-    }
-
-    .card h2 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 14px;
-      color: #111827;
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
     }
 
-    .card h2 .icon {
-      width: 32px;
-      height: 32px;
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #4f83f7 0%, #7c63f8 100%);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      background: #f3f4f6;
-      flex-shrink: 0;
+      color: white;
     }
 
-    .card p, .card li {
-      font-size: 14.5px;
-      color: #374151;
+    .nav-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
     }
 
-    .card ul {
-      padding-left: 20px;
-      margin-top: 10px;
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-3);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 20px;
     }
 
-    .card ul li {
-      margin-bottom: 8px;
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 24px 56px;
+      text-align: center;
     }
 
-    .card ul li strong {
-      color: #111827;
-    }
-
-    .highlight {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin-top: 14px;
-      font-size: 14px;
-      color: #1d4ed8;
-    }
-
-    .warning {
-      background: #fefce8;
-      border: 1px solid #fde68a;
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin-top: 14px;
-      font-size: 14px;
-      color: #92400e;
-    }
-
-    .last-updated {
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 12px;
-      color: #9ca3af;
-      margin-top: 4px;
+      font-weight: 500;
+      color: var(--green);
+      background: var(--green-light);
+      border: 1px solid var(--green-border);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
     }
 
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: var(--text-2);
+      max-width: 480px;
+      margin: 0 auto 20px;
+    }
+
+    .hero-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    /* ===== LAYOUT ===== */
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* ===== SECTION CARD ===== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+    }
+
+    .icon-blue  { background: #4f6ef7; }
+    .icon-slate { background: #64748b; }
+    .icon-red   { background: #ef4444; }
+    .icon-violet{ background: #7c3aed; }
+    .icon-zinc  { background: #71717a; }
+    .icon-rose  { background: #f43f5e; }
+    .icon-sky   { background: #0ea5e9; }
+
+    .card-header-text h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-header-text p {
+      font-size: 12px;
+      color: var(--text-3);
+      margin-top: 1px;
+    }
+
+    .card-body {
+      padding: 22px 24px;
+    }
+
+    .card-body p {
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* ===== DATA LIST ===== */
+    .data-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .data-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-item:last-child { border-bottom: none; }
+
+    .data-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .data-item-icon.no {
+      background: var(--red-light);
+      color: var(--red);
+    }
+
+    .data-item strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .data-item span {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* ===== NOTICE ===== */
+    .notice {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    .notice.blue {
+      background: var(--accent-light);
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+    }
+
+    .notice.amber {
+      background: var(--amber-light);
+      color: #92400e;
+      border: 1px solid var(--amber-border);
+    }
+
+    .notice.green {
+      background: var(--green-light);
+      color: #14532d;
+      border: 1px solid var(--green-border);
+    }
+
+    .notice-icon { flex-shrink: 0; margin-top: 1px; }
+
+    /* ===== API TABLE ===== */
+    .api-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .api-row:last-child { border-bottom: none; }
+
+    .api-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+
+    .tag-primary { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .tag-fallback { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+
+    .api-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .api-info p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .api-info a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .api-info a:hover { text-decoration: underline; }
+
+    /* ===== PERMISSIONS ===== */
+    .perm-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .perm-row:last-child { border-bottom: none; }
+
+    .perm-name {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .perm-desc {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* ===== CONTACT ===== */
     .contact-card {
-      background: #111827;
-      color: #f9fafb;
-      border-radius: 12px;
-      padding: 32px;
-      margin-top: 24px;
+      background: var(--text);
+      border-radius: var(--radius);
+      padding: 40px;
       text-align: center;
     }
 
     .contact-card h2 {
       font-size: 20px;
       font-weight: 600;
-      margin-bottom: 8px;
-      color: #f9fafb;
+      color: #fff;
+      margin: 16px 0 8px;
     }
 
     .contact-card p {
-      color: #9ca3af;
       font-size: 14px;
-      margin-bottom: 16px;
+      color: #a1a1aa;
+      margin-bottom: 24px;
     }
 
-    .contact-card a {
-      color: #60a5fa;
-      text-decoration: none;
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 9px;
+      font-size: 13.5px;
       font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s ease;
     }
 
-    .contact-card a:hover {
-      text-decoration: underline;
+    .contact-btn.primary {
+      background: #fff;
+      color: var(--text);
     }
 
+    .contact-btn.secondary {
+      background: #27272a;
+      color: #e4e4e7;
+      border: 1px solid #3f3f46;
+    }
+
+    .contact-btn:hover { opacity: 0.85; }
+
+    /* ===== FOOTER ===== */
     footer {
-      text-align: center;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
       padding: 24px;
-      font-size: 12px;
-      color: #9ca3af;
-      border-top: 1px solid #e5e7eb;
-      background: #ffffff;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="header-inner">
-      <div class="logo">💡</div>
-      <div class="brand">Shalaye <span>AI-Powered Content Simplifier</span></div>
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="nav-logo">
+          <i data-lucide="book-open" style="width:18px;height:18px;"></i>
+        </div>
+        <span class="nav-name">Shalaye</span>
+      </a>
+      <span class="nav-badge">Privacy Policy</span>
     </div>
-  </header>
+  </nav>
 
-  <!-- Main Content -->
-  <main>
-
-    <!-- Hero -->
-    <div class="hero">
-      <h1>Privacy Policy</h1>
-      <p class="last-updated">Last updated: May 1, 2026</p>
-      <p style="margin-top: 12px;">
-        We believe in full transparency. This page explains exactly what data Shalaye accesses, why, and what we never do with it.
-      </p>
-      <div class="badge">✅ We do not sell or share your data</div>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">
+      <i data-lucide="shield-check" style="width:13px;height:13px;"></i>
+      Privacy First
     </div>
+    <h1>Privacy Policy</h1>
+    <p>We believe in full transparency. Here's exactly what data Shalaye accesses, why, and what we never do with it.</p>
+    <div class="hero-meta">
+      <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+      Last updated: May 1, 2026
+    </div>
+  </div>
+
+  <!-- Page Body -->
+  <div class="page">
 
     <!-- Overview -->
     <div class="card">
-      <h2><span class="icon">📖</span> Overview</h2>
-      <p>
-        Shalaye is a Chrome browser extension that uses artificial intelligence to help users summarize, simplify, and understand web content. This Privacy Policy describes how we handle information when you use the extension.
-      </p>
-      <div class="highlight">
-        <strong>The short version:</strong> Shalaye reads the text on the page you're viewing (only when you click "Summarize") and sends it to an AI API to generate a summary. Nothing is stored on our servers. Nothing is sold. Ever.
+      <div class="card-header">
+        <div class="card-icon icon-blue">
+          <i data-lucide="info" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>Overview</h2>
+          <p>The short version of our privacy stance</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Shalaye is a Chrome extension that helps users summarize, simplify, and understand web content. This Privacy Policy explains how we handle information when you use the extension.</p>
+        <div class="notice blue">
+          <i data-lucide="zap" class="notice-icon" style="width:16px;height:16px;"></i>
+          <span><strong>The short version:</strong> Shalaye reads the text on the page you're viewing (only when you click "Summarize") and sends it to an AI API to generate a summary. Nothing is stored on our servers. Nothing is sold. Ever.</span>
+        </div>
       </div>
     </div>
 
     <!-- What We Access -->
     <div class="card">
-      <h2><span class="icon">🔍</span> What Data We Access</h2>
-      <p>Shalaye only accesses the following, and only when you explicitly trigger an action:</p>
-      <ul>
-        <li>
-          <strong>Website content (page text):</strong> When you click "Summarize This Page" or use the Quick Explain feature, the visible text content of the current webpage is extracted and sent to the AI API to generate a summary.
-        </li>
-        <li>
-          <strong>Page title and URL:</strong> Used to label your saved summaries so you can identify them later. Stored locally in your browser only.
-        </li>
-        <li>
-          <strong>Theme preference (light/dark):</strong> Stored locally in your browser using Chrome Storage so your preference is remembered.
-        </li>
-        <li>
-          <strong>Saved summaries:</strong> If you choose to save a summary, it is stored locally on your device using Chrome's built-in storage. We never upload saved summaries to any server.
-        </li>
-      </ul>
+      <div class="card-header">
+        <div class="card-icon icon-slate">
+          <i data-lucide="scan-search" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>What Data We Access</h2>
+          <p>Only when you explicitly trigger an action</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="data-list">
+          <div class="data-item">
+            <div class="data-item-icon">
+              <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+            </div>
+            <div>
+              <strong>Website content (page text)</strong>
+              <span>When you click "Summarize This Page" or use Quick Explain, the visible text of the current webpage is extracted and sent to the AI API to generate a summary.</span>
+            </div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon">
+              <i data-lucide="link" style="width:16px;height:16px;"></i>
+            </div>
+            <div>
+              <strong>Page title and URL</strong>
+              <span>Used to label saved summaries so you can identify them later. Stored locally in your browser only — never uploaded.</span>
+            </div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon">
+              <i data-lucide="sun-moon" style="width:16px;height:16px;"></i>
+            </div>
+            <div>
+              <strong>Theme preference (light/dark)</strong>
+              <span>Stored locally in your browser using Chrome Storage so your preference is remembered across sessions.</span>
+            </div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon">
+              <i data-lucide="bookmark" style="width:16px;height:16px;"></i>
+            </div>
+            <div>
+              <strong>Saved summaries</strong>
+              <span>If you choose to save a summary, it is stored locally on your device using Chrome's built-in storage. We never upload saved summaries to any server.</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- What We Do NOT Collect -->
     <div class="card">
-      <h2><span class="icon">🚫</span> What We Do NOT Collect</h2>
-      <ul>
-        <li>❌ We do <strong>not</strong> collect your name, email, or any personal identity information</li>
-        <li>❌ We do <strong>not</strong> track your browsing history or which sites you visit</li>
-        <li>❌ We do <strong>not</strong> use cookies or any cross-site tracking</li>
-        <li>❌ We do <strong>not</strong> collect health, financial, or authentication data</li>
-        <li>❌ We do <strong>not</strong> monitor your keystrokes, mouse activity, or screen</li>
-        <li>❌ We do <strong>not</strong> collect location or IP address information</li>
-        <li>❌ We do <strong>not</strong> have a backend server that stores any of your data</li>
-      </ul>
+      <div class="card-header">
+        <div class="card-icon icon-red">
+          <i data-lucide="shield-x" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>What We Do NOT Collect</h2>
+          <p>Hard limits we will never cross</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="data-list">
+          <div class="data-item">
+            <div class="data-item-icon no"><i data-lucide="user-x" style="width:16px;height:16px;"></i></div>
+            <div><strong>Personal identity information</strong><span>No names, emails, addresses, ages, or identification numbers are collected.</span></div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon no"><i data-lucide="history" style="width:16px;height:16px;"></i></div>
+            <div><strong>Browsing history</strong><span>We do not track which websites you visit or build any browsing profile.</span></div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon no"><i data-lucide="map-pin" style="width:16px;height:16px;"></i></div>
+            <div><strong>Location data</strong><span>No GPS coordinates, region, or IP address information is collected.</span></div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon no"><i data-lucide="credit-card" style="width:16px;height:16px;"></i></div>
+            <div><strong>Financial or health data</strong><span>We never collect payment information, medical records, or any sensitive personal data.</span></div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon no"><i data-lucide="keyboard" style="width:16px;height:16px;"></i></div>
+            <div><strong>Keystrokes or mouse activity</strong><span>No keylogging, click tracking, scroll monitoring, or screen recording of any kind.</span></div>
+          </div>
+          <div class="data-item">
+            <div class="data-item-icon no"><i data-lucide="server-off" style="width:16px;height:16px;"></i></div>
+            <div><strong>Server-side storage</strong><span>We have no backend server. There is no database storing your information anywhere.</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- AI APIs -->
+    <!-- AI API Usage -->
     <div class="card">
-      <h2><span class="icon">🤖</span> AI API Usage</h2>
-      <p>
-        To generate summaries and explanations, Shalaye sends the text content of the page you are currently viewing to third-party AI services:
-      </p>
-      <ul>
-        <li>
-          <strong>Google Gemini API (Primary):</strong> Page text is sent to Google's Gemini API for processing. Google's data handling is governed by their <a href="https://policies.google.com/privacy" target="_blank" style="color: #3b82f6;">Privacy Policy</a> and <a href="https://ai.google.dev/terms" target="_blank" style="color: #3b82f6;">Generative AI Terms</a>.
-        </li>
-        <li>
-          <strong>Groq API (Fallback):</strong> If the primary API is unavailable, page text may be sent to Groq's API. Groq's data handling is governed by their <a href="https://groq.com/privacy-policy/" target="_blank" style="color: #3b82f6;">Privacy Policy</a>.
-        </li>
-      </ul>
-      <div class="warning">
-        ⚠️ <strong>Important:</strong> Do not use the Summarize feature on pages containing sensitive personal information (passwords, medical records, financial data, etc.), as that text would be sent to a third-party AI service for processing.
+      <div class="card-header">
+        <div class="card-icon icon-violet">
+          <i data-lucide="cpu" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>AI API Usage</h2>
+          <p>Third-party services used for summarization</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p style="margin-bottom: 16px;">To generate summaries and explanations, Shalaye sends the text content of the page you are currently viewing to the following AI services:</p>
+        <div class="data-list">
+          <div class="api-row">
+            <span class="api-tag tag-primary">Primary</span>
+            <div class="api-info">
+              <strong>Google Gemini API</strong>
+              <p>Page text is sent to Google's Gemini 2.0 Flash API for processing. Governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a> and <a href="https://ai.google.dev/terms" target="_blank">Generative AI Terms</a>.</p>
+            </div>
+          </div>
+          <div class="api-row">
+            <span class="api-tag tag-fallback">Fallback</span>
+            <div class="api-info">
+              <strong>Groq API (Llama 3.3 70B)</strong>
+              <p>If the primary API is unavailable, page text may be sent to Groq's API as a backup. Governed by <a href="https://groq.com/privacy-policy/" target="_blank">Groq's Privacy Policy</a>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="notice amber">
+          <i data-lucide="triangle-alert" class="notice-icon" style="width:16px;height:16px;"></i>
+          <span><strong>Important:</strong> Do not use the Summarize feature on pages containing sensitive personal information (passwords, medical records, financial data), as that text would be sent to a third-party AI service for processing.</span>
+        </div>
       </div>
     </div>
 
     <!-- Local Storage -->
     <div class="card">
-      <h2><span class="icon">💾</span> Local Storage Only</h2>
-      <p>
-        Any data that Shalaye stores (saved summaries, your theme preference) is kept exclusively on your own device using Chrome's built-in <code>chrome.storage.local</code> API. This data:
-      </p>
-      <ul>
-        <li>Never leaves your device (except as noted in AI API usage above)</li>
-        <li>Is not accessible to us or any third party</li>
-        <li>Can be deleted at any time by removing the extension</li>
-      </ul>
+      <div class="card-header">
+        <div class="card-icon icon-zinc">
+          <i data-lucide="hard-drive" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>Local Storage Only</h2>
+          <p>Your data stays on your device</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Any data that Shalaye stores (saved summaries, your theme preference) is kept exclusively on your own device using Chrome's built-in <code style="font-family:monospace;font-size:12px;background:#f4f4f5;padding:2px 6px;border-radius:4px;">chrome.storage.local</code> API. This data:</p>
+        <div class="notice green" style="margin-top:16px;">
+          <i data-lucide="lock" class="notice-icon" style="width:16px;height:16px;"></i>
+          <span>Never leaves your device · Not accessible to us or any third party · Can be deleted anytime by removing the extension</span>
+        </div>
+      </div>
     </div>
 
     <!-- Permissions -->
     <div class="card">
-      <h2><span class="icon">🔐</span> Chrome Permissions Explained</h2>
-      <ul>
-        <li><strong>activeTab:</strong> Allows Shalaye to read the content of the tab you are currently viewing — only when you click the extension.</li>
-        <li><strong>storage:</strong> Allows saving your summaries and preferences locally on your device.</li>
-        <li><strong>scripting:</strong> Allows Shalaye to inject the Quick Explain tooltip into the page when you select text.</li>
-        <li><strong>contextMenus:</strong> Adds the "Shalaye: Explain this" option when you right-click selected text.</li>
-      </ul>
+      <div class="card-header">
+        <div class="card-icon icon-sky">
+          <i data-lucide="key-round" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>Chrome Permissions Explained</h2>
+          <p>Why each permission is required</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="data-list">
+          <div class="perm-row">
+            <span class="perm-name">activeTab</span>
+            <span class="perm-desc">Allows Shalaye to read the content of the tab you're currently viewing — only when you click the extension button.</span>
+          </div>
+          <div class="perm-row">
+            <span class="perm-name">storage</span>
+            <span class="perm-desc">Allows saving your summaries and theme preferences locally on your own device.</span>
+          </div>
+          <div class="perm-row">
+            <span class="perm-name">scripting</span>
+            <span class="perm-desc">Allows Shalaye to inject the Quick Explain tooltip into the page when you highlight text.</span>
+          </div>
+          <div class="perm-row">
+            <span class="perm-name">contextMenus</span>
+            <span class="perm-desc">Adds the "Shalaye: Explain this" option when you right-click on selected text.</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Children -->
     <div class="card">
-      <h2><span class="icon">👶</span> Children's Privacy</h2>
-      <p>
-        Shalaye is not directed at children under the age of 13. We do not knowingly collect any information from children. If you believe a child has used this extension in a way that raises privacy concerns, please contact us.
-      </p>
+      <div class="card-header">
+        <div class="card-icon icon-rose">
+          <i data-lucide="baby" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>Children's Privacy</h2>
+          <p>COPPA compliance</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Shalaye is not directed at children under the age of 13. We do not knowingly collect any information from children. If you believe a child has used this extension in a way that raises privacy concerns, please contact us immediately.</p>
+      </div>
     </div>
 
     <!-- Changes -->
     <div class="card">
-      <h2><span class="icon">📝</span> Changes to This Policy</h2>
-      <p>
-        We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. Continued use of the extension after changes constitutes acceptance of the new policy.
-      </p>
+      <div class="card-header">
+        <div class="card-icon icon-slate">
+          <i data-lucide="file-clock" style="width:18px;height:18px;"></i>
+        </div>
+        <div class="card-header-text">
+          <h2>Changes to This Policy</h2>
+          <p>How we handle updates</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+      </div>
     </div>
 
     <!-- Contact -->
     <div class="contact-card">
+      <i data-lucide="mail" style="width:36px;height:36px;color:#71717a;"></i>
       <h2>Questions or Concerns?</h2>
-      <p>If you have any questions about this Privacy Policy or how Shalaye handles your data, feel free to reach out.</p>
-      <a href="mailto:Akindepraise5@gmail.com">Akindepraise5@gmail.com</a>
-      <br><br>
-      <a href="https://github.com/akindepraise5/Shalaye" target="_blank">github.com/akindepraise5/Shalaye</a>
+      <p>If you have questions about this Privacy Policy or how Shalaye handles your data, reach out — we respond quickly.</p>
+      <div class="contact-links">
+        <a href="mailto:Akindepraise5@gmail.com" class="contact-btn primary">
+          <i data-lucide="mail" style="width:15px;height:15px;"></i>
+          Akindepraise5@gmail.com
+        </a>
+        <a href="https://github.com/akindepraise5/Shalaye" target="_blank" class="contact-btn secondary">
+          <i data-lucide="github" style="width:15px;height:15px;"></i>
+          GitHub Repository
+        </a>
+      </div>
     </div>
 
-  </main>
+  </div>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2026 Shalaye. Built with ❤️ for the Gemini API Hackathon.
+    <i data-lucide="copyright" style="width:13px;height:13px;"></i>
+    2026 Shalaye · Built for the Gemini API Hackathon
   </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
 
 </body>
 </html>
