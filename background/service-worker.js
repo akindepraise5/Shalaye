@@ -2,14 +2,18 @@
 // Dual API: Gemini (primary) + Groq (fallback)
 
 // ===== API Configuration =====
-// API keys should be set in the options page or via environment
-// For development, replace these with your own keys
-const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY';
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
-
-const GROQ_API_KEY = 'YOUR_GROQ_API_KEY';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_MODEL = 'llama-3.3-70b-versatile';
+const GROQ_MODEL = 'llama-3.1-8b-instant';
+const PROXY_API_URL = 'https://shalaye-api-proxy.akindepraise5.workers.dev/';
+
+// ===== Retrieve API Keys from Storage =====
+async function getAPIKeys() {
+    return await chrome.storage.sync.get({
+        geminiKey: '',
+        groqKey: ''
+    });
+}
 
 // ===== Context Menu Setup =====
 chrome.runtime.onInstalled.addListener(() => {
@@ -39,6 +43,11 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             });
         } catch (error) {
             console.error('Explain error:', error);
+            await chrome.tabs.sendMessage(tab.id, {
+                action: 'explainText',
+                error: error.message,
+                position: { x: 100, y: 100 }
+            }).catch(() => {});
         }
     }
 });
@@ -68,14 +77,18 @@ async function handleSummarize({ content, level, url, title }) {
 
     const prompt = buildSummarizePrompt(content, level, title);
 
-    // Try Gemini first, fallback to Groq
+    // Try Groq first, fallback to Gemini
     let response;
     try {
-        console.log('Trying Gemini API...');
-        response = await callGeminiAPI(prompt);
-    } catch (geminiError) {
-        console.log('Gemini failed, trying Groq...', geminiError.message);
+        console.log('Trying Groq API...');
         response = await callGroqAPI(prompt);
+    } catch (groqError) {
+        console.log('Groq failed, trying Gemini...', groqError.message);
+        try {
+            response = await callGeminiAPI(prompt);
+        } catch (geminiError) {
+            throw new Error(`APIs failed. Groq: ${groqError.message}. Gemini: ${geminiError.message}`);
+        }
     }
 
     return parseSummaryResponse(response);
@@ -119,15 +132,51 @@ async function explainText(text) {
 Use everyday language. Be friendly and brief.`;
 
     try {
-        return await callGeminiAPI(prompt, true);
-    } catch (e) {
         return await callGroqAPI(prompt, true);
+    } catch (groqError) {
+        try {
+            return await callGeminiAPI(prompt, true);
+        } catch (geminiError) {
+            throw new Error(`APIs failed. Groq: ${groqError.message}. Gemini: ${geminiError.message}`);
+        }
     }
+}
+
+// ===== Call Proxy API =====
+async function callProxyAPI(prompt, model, rawText = false) {
+    const response = await fetch(PROXY_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, model })
+    });
+
+    if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error || `Proxy error ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    let text = '';
+    if (model === 'gemini') {
+        text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    } else if (model === 'groq') {
+        text = data.choices?.[0]?.message?.content;
+    }
+
+    if (!text) throw new Error(`No response from Proxy (${model})`);
+    return rawText ? text.trim() : text;
 }
 
 // ===== Call Gemini API =====
 async function callGeminiAPI(prompt, rawText = false) {
-    const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+    const { geminiKey } = await getAPIKeys();
+    
+    if (!geminiKey) {
+        return await callProxyAPI(prompt, 'gemini', rawText);
+    }
+
+    const response = await fetch(`${GEMINI_API_URL}?key=${geminiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -153,11 +202,17 @@ async function callGeminiAPI(prompt, rawText = false) {
 
 // ===== Call Groq API =====
 async function callGroqAPI(prompt, rawText = false) {
+    const { groqKey } = await getAPIKeys();
+    
+    if (!groqKey) {
+        return await callProxyAPI(prompt, 'groq', rawText);
+    }
+
     const response = await fetch(GROQ_API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${GROQ_API_KEY}`
+            'Authorization': `Bearer ${groqKey}`
         },
         body: JSON.stringify({
             model: GROQ_MODEL,

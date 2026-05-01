@@ -3,168 +3,164 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Shalaye Icon Generator</title>
+    <title>Shalaye Icon Resizer</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             padding: 40px;
             background: #f5f5f5;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            color: #333;
         }
 
-        .icons {
+        .upload-section {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            background: #fafafa;
+        }
+
+        .upload-section.dragover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .icons-preview {
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
-        .icon-wrapper {
-            background: white;
+        .icon-card {
+            background: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
         }
 
         canvas {
-            display: block;
-            margin: 10px auto;
-            background: white;
+            background: transparent;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
         }
 
         button {
-            margin-top: 10px;
-            padding: 8px 16px;
-            background: #2383e2;
+            background: #3b82f6;
             color: white;
             border: none;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
         }
 
         button:hover {
-            background: #1a6bc2;
+            background: #2563eb;
         }
 
-        .instructions {
-            margin-top: 30px;
-            padding: 20px;
-            background: #fffbe6;
-            border-radius: 8px;
-            border-left: 4px solid #f5a623;
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    <h1>💡 Shalaye Icon Generator</h1>
-    <p>Click each button to download the icon as PNG. Save to the <code>icons/</code> folder.</p>
+    <div class="container">
+        <h1>🖼️ Shalaye Icon Resizer</h1>
 
-    <div class="icons">
-        <div class="icon-wrapper">
-            <h3>128x128</h3>
-            <canvas id="canvas128" width="128" height="128"></canvas>
-            <button onclick="download('canvas128', 'icon128.png')">Download</button>
+        <div class="upload-section" id="dropZone">
+            <h3>Drag & Drop your new icon here</h3>
+            <p>or</p>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <button onclick="document.getElementById('fileInput').click()">Choose Image file</button>
+            <p style="margin-top: 10px; font-size: 12px; color: #666;">Recommended: 512x512 PNG or SVG</p>
         </div>
-        <div class="icon-wrapper">
-            <h3>48x48</h3>
-            <canvas id="canvas48" width="48" height="48"></canvas>
-            <button onclick="download('canvas48', 'icon48.png')">Download</button>
-        </div>
-        <div class="icon-wrapper">
-            <h3>16x16</h3>
-            <canvas id="canvas16" width="16" height="16"></canvas>
-            <button onclick="download('canvas16', 'icon16.png')">Download</button>
-        </div>
-    </div>
 
-    <div class="instructions">
-        <h3>📋 Instructions</h3>
-        <ol>
-            <li>Open this file in Chrome (just double-click it)</li>
-            <li>Click each "Download" button to save the icons</li>
-            <li>Save them to the <code>Shalaye/icons/</code> folder as:
-                <ul>
-                    <li><code>icon16.png</code></li>
-                    <li><code>icon48.png</code></li>
-                    <li><code>icon128.png</code></li>
-                </ul>
-            </li>
-            <li>Then load the extension in Chrome!</li>
-        </ol>
+        <div id="previewSection" class="hidden">
+            <h3>👇 Download these 3 files to your "icons" folder</h3>
+            <p style="color: #666; font-size: 13px; margin-bottom: 20px;">Use the exact filenames below!</p>
+
+            <div class="icons-preview">
+                <div class="icon-card">
+                    <p>128x128</p>
+                    <canvas id="c128" width="128" height="128"></canvas><br>
+                    <button onclick="download('c128', 'icon128.png')">Download icon128.png</button>
+                </div>
+                <div class="icon-card">
+                    <p>48x48</p>
+                    <canvas id="c48" width="48" height="48"></canvas><br>
+                    <button onclick="download('c48', 'icon48.png')">Download icon48.png</button>
+                </div>
+                <div class="icon-card">
+                    <p>16x16</p>
+                    <canvas id="c16" width="16" height="16"></canvas><br>
+                    <button onclick="download('c16', 'icon16.png')">Download icon16.png</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function drawIcon(canvasId, size) {
-            const canvas = document.getElementById(canvasId);
-            const ctx = canvas.getContext('2d');
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const previewSection = document.getElementById('previewSection');
 
-            // Background
-            ctx.fillStyle = '#ffffff';
-            roundRect(ctx, 0, 0, size, size, size * 0.15);
-            ctx.fill();
+        // Drag handlers
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFile(e.dataTransfer.files[0]);
+        });
 
-            // Scale factor
-            const scale = size / 128;
+        // File input handler
+        fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
 
-            // Gradient
-            const gradient = ctx.createLinearGradient(0, 0, size, size);
-            gradient.addColorStop(0, '#2383e2');
-            gradient.addColorStop(1, '#6366f1');
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) return;
 
-            // Lightbulb body
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-
-            const cx = size / 2;
-            const bulbRadius = size * 0.28;
-            const topY = size * 0.18;
-
-            // Draw bulb shape
-            ctx.arc(cx, topY + bulbRadius, bulbRadius, Math.PI * 1.15, Math.PI * 1.85, false);
-
-            // Neck
-            const neckTop = topY + bulbRadius * 1.6;
-            const neckWidth = size * 0.16;
-            ctx.lineTo(cx + neckWidth, neckTop);
-            ctx.lineTo(cx + neckWidth, neckTop + size * 0.12);
-            ctx.lineTo(cx - neckWidth, neckTop + size * 0.12);
-            ctx.lineTo(cx - neckWidth, neckTop);
-
-            ctx.closePath();
-            ctx.fill();
-
-            // Base line
-            ctx.fillStyle = gradient;
-            ctx.globalAlpha = 0.7;
-            roundRect(ctx, cx - neckWidth * 0.9, neckTop + size * 0.14, neckWidth * 1.8, size * 0.05, size * 0.02);
-            ctx.fill();
-
-            // Light glow
-            ctx.globalAlpha = 0.25;
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(cx, topY + bulbRadius * 0.8, bulbRadius * 0.35, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.globalAlpha = 1;
+            const img = new Image();
+            img.onload = () => {
+                drawToCanvas(img, 'c128', 128);
+                drawToCanvas(img, 'c48', 48);
+                drawToCanvas(img, 'c16', 16);
+                previewSection.classList.remove('hidden');
+            };
+            img.src = URL.createObjectURL(file);
         }
 
-        function roundRect(ctx, x, y, width, height, radius) {
-            ctx.beginPath();
-            ctx.moveTo(x + radius, y);
-            ctx.lineTo(x + width - radius, y);
-            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-            ctx.lineTo(x + width, y + height - radius);
-            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-            ctx.lineTo(x + radius, y + height);
-            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-            ctx.lineTo(x, y + radius);
-            ctx.quadraticCurveTo(x, y, x + radius, y);
-            ctx.closePath();
+        function drawToCanvas(img, canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, size, size);
+            // Draw nicely resized
+            ctx.drawImage(img, 0, 0, size, size);
         }
 
         function download(canvasId, filename) {
@@ -174,11 +170,6 @@
             link.href = canvas.toDataURL('image/png');
             link.click();
         }
-
-        // Draw all icons
-        drawIcon('canvas128', 128);
-        drawIcon('canvas48', 48);
-        drawIcon('canvas16', 16);
     </script>
 </body>
 
